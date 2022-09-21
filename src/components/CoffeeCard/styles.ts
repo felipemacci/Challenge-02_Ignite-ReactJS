@@ -41,6 +41,7 @@ export const CoffeeCardContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 0.25rem;
+    margin-bottom: auto;
 
     h3 {
       line-height: 1.3;

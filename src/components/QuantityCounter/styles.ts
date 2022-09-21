@@ -23,6 +23,7 @@ export const QuantityCounterContainer = styled.div`
 
   span {
     width: 1.25rem;
+    text-align: center;
     color: ${(props) => props.theme["base-title"]};
   }
 `

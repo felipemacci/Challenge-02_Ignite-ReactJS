@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    
+    font-size: 1rem;
   }
 
   body, input, textarea, button {

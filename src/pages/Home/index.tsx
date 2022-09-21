@@ -60,7 +60,7 @@ const coffees = [
   },
 
   {
-    name: 'Coffe with milk',
+    name: 'Coffee with milk',
     description: 'Half and half traditional espresso with steamed milk',
     image: milk,
     tags: [
@@ -188,6 +188,7 @@ export function Home() {
                   image={ coffee.image }
                   tags={ coffee.tags }
                   price={ coffee.price }
+                  key={ coffee.name }
                 />
               )
             })

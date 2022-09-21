@@ -3,11 +3,11 @@ import { QuantityCounter } from "../QuantityCounter";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartSimple } from "phosphor-react";
 
-interface CoffeeCardProps {
+export interface CoffeeCardProps {
   name: string
-  description: string,
-  image: string,
-  tags: string[],
+  description: string
+  image: string
+  tags: string[]
   price: number
 }
 
@@ -20,11 +20,7 @@ export function CoffeeCard({ name, description, image, tags, price }: CoffeeCard
         <ul>
           {
             tags.map((tag) => {
-              return (
-                <li>
-                  {tag}
-                </li>
-              )
+              return <li>{ tag }</li>
             })
           }
         </ul>
@@ -42,6 +38,7 @@ export function CoffeeCard({ name, description, image, tags, price }: CoffeeCard
 
         <div className="cart-actions">
           <QuantityCounter />
+          
           <NavLink to="/cart">
             <ShoppingCartSimple size={ 22 } weight="fill" />
           </NavLink>
