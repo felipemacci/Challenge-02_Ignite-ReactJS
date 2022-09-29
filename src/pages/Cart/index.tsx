@@ -1,10 +1,64 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 import { AddressFormContainer, CartContainer, OrderContainer, PaymentMethodFormContainer } from "./styles";
-import cafe from '../../assets/american.svg'
 import { CoffeeItem } from "../../components/CoffeeItem";
 import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/CartContext";
+import { useForm } from "react-hook-form";
+import * as zod from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ClientInfoContext } from "../../contexts/ClientInfoContext";
 
 export function Cart() {
+  const { cart } = useContext(CartContext)
+
+  const OrderFormValidationSchema = zod.object({
+    cep: zod.number().min(8).max(8),
+    street: zod.string(),
+    number: zod.number(),
+    complement: zod.string(),
+    district: zod.string(),
+    city: zod.string(),
+    uf: zod.string().min(2).max(2),
+    'payment-method': zod.string()
+  })
+
+  type OrderFormData = zod.infer<typeof OrderFormValidationSchema>
+
+  const OrderForm = useForm<OrderFormData>({
+    resolver: zodResolver(OrderFormValidationSchema)
+  })
+
+  const { register, watch, getValues } = OrderForm
+
+  const requiredFields = watch(['cep', 'street', 'number', 'district', 'city', 'uf', 'payment-method'])
+  const isSubmitDisabled = requiredFields.some(field => !field)
+
+  const cartItemsWithUrAmounts = cart.map(coffee => {
+    return coffee.amount * coffee.price
+  })
+
+  const totalItems = cartItemsWithUrAmounts.reduce((prev, curr) => prev + curr, 0)
+
+  let delivery = !requiredFields.some(field => !field) ? 3.5 : 0
+
+  const totalValue = totalItems + delivery
+
+  const { setClientInfo } = useContext(ClientInfoContext)
+
+  const completeOrder = () => {
+    setClientInfo({
+      street: getValues('street'),
+      number: getValues('number'),
+      district: getValues('district'),
+      city: getValues('city'),
+      uf: getValues('uf'),
+      payment: getValues('payment-method')
+    })
+
+    //setCart([])
+  }
+
   return (
     <CartContainer className="container">
       <section id="complete-order">
@@ -21,16 +75,16 @@ export function Cart() {
           </header>
 
           <form>
-            <input type="text" placeholder="CEP" />
-            <input type="text" placeholder="Street" />
-            <input type="number" placeholder="Number" />
+            <input type="number" placeholder="CEP" required {...register('cep')} />
+            <input type="text" placeholder="Street" required {...register('street')} />
+            <input type="number" placeholder="Number" required {...register('number')} />
             <div>
-              <input id="complement" type="text" placeholder="Complement" />
+              <input id="complement" type="text" placeholder="Complement" {...register('complement')} />
               <label htmlFor="complement">Optional</label>
             </div>
-            <input type="text" placeholder="District" />
-            <input type="text" placeholder="City" />
-            <input type="text" placeholder="UF" />
+            <input type="text" placeholder="District" required {...register('district')} />
+            <input type="text" placeholder="City" required {...register('city')} />
+            <input type="text" minLength={ 2 } maxLength={ 2 } placeholder="UF" required {...register('uf')} />
           </form>
         </AddressFormContainer>
 
@@ -45,17 +99,17 @@ export function Cart() {
           </header>
 
           <form>
-            <input id="payment-method__credit" type="radio" name="payment-method" />
+            <input id="payment-method__credit" type="radio" value="Credit Card" {...register('payment-method')} />
             <label htmlFor="payment-method__credit">
               <CreditCard size={ 16 } />
               <span>Credit Card</span>
             </label>
-            <input id="payment-method__debit" type="radio" name="payment-method" />
+            <input id="payment-method__debit" type="radio" value="Debit Card" {...register('payment-method')} />
             <label htmlFor="payment-method__debit">
               <Bank size={ 16 } />
               <span>Debit Card</span>
             </label>
-            <input id="payment-method__money" type="radio" name="payment-method" />
+            <input id="payment-method__money" type="radio" value="Money" {...register('payment-method')} />
             <label htmlFor="payment-method__money">
               <Money size={ 16 } />
               <span>Money</span>
@@ -69,45 +123,52 @@ export function Cart() {
 
         <OrderContainer>
           <ul>
-            <li>
-              <CoffeeItem
-                name="Leitinho"
-                image={ cafe }
-                price={ 0.01 }
-                key={ 'nossa que bosta' }
-              />
-            </li>
-
-            <li>
-              <CoffeeItem
-                name="Leitinho"
-                image={ cafe }
-                price={ 0.01 }
-                key={ 'nossa que bosta' }
-              />
-            </li>
+            {
+              cart.length > 0 ? (
+                cart.map(coffee => {
+                  return (
+                    <li>
+                      <CoffeeItem
+                        name={ coffee.name }
+                        image={ coffee.image }
+                        price={ coffee.price }
+                        key={ coffee.name }
+                      />
+                    </li>
+                  )
+                })
+              ) : (
+                <p>Nenhum item em seu carrinho :P</p>
+              )
+            }
           </ul>
 
           <table>
             <tbody>
               <tr>
                 <td>Total items</td>
-                <td>$ 29,70</td>
+                <td>$ { String(totalItems.toFixed(2)).replace('.', ',') }</td>
               </tr>
 
               <tr>
                 <td>Delivery</td>
-                <td>$ 3,50</td>
+                <td>$ { String(delivery.toFixed(2)).replace('.', ',') }</td>
               </tr>
 
               <tr>
                 <td>Total</td>
-                <td>$ 33,20</td>
+                <td>$ { String(totalValue.toFixed(2)).replace('.', ',') }</td>
               </tr>
             </tbody>
           </table>
 
-          <NavLink to="/success">Confirm order</NavLink>
+          {
+            isSubmitDisabled ? (
+              <button type="button">Confirm order</button>
+            ) : (
+              <NavLink to="/success" onClick={ completeOrder }>Confirm order</NavLink>
+            )
+          }
         </OrderContainer>
       </section>
     </CartContainer>

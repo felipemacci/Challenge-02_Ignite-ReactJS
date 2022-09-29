@@ -37,7 +37,7 @@ export function CoffeeCard({ name, description, image, tags, price }: CoffeeCard
         </span>
 
         <div className="cart-actions">
-          <QuantityCounter />
+          <QuantityCounter ofCoffee={ name } />
           
           <NavLink to="/cart">
             <ShoppingCartSimple size={ 22 } weight="fill" />

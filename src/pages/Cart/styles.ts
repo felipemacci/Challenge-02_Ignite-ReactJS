@@ -178,6 +178,11 @@ export const OrderContainer = styled.div`
   > ul {
     list-style: none;
 
+    > p {
+      color: ${(props) => props.theme["base-subtitle"]};
+      margin-bottom: 4rem;
+    }
+
     li {
       padding: 1.5rem 0;
       border-bottom: 1px solid ${(props) => props.theme["base-button"]};
@@ -214,7 +219,7 @@ export const OrderContainer = styled.div`
     }
   }
 
-  > a {
+  > button, > a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,9 +235,14 @@ export const OrderContainer = styled.div`
     border-radius: 6px;
     outline: none;
     cursor: pointer;
+  }
 
-    &:hover {
-      background: ${(props) => props.theme["yellow-dark"]};
-    }
+  > button {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  > a:hover {
+    background: ${(props) => props.theme["yellow-dark"]};
   }
 `

@@ -1,21 +1,24 @@
 import { QuantityCounterContainer } from "./styles";
 import { Minus, Plus } from 'phosphor-react'
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
-export function QuantityCounter() {
-  const [quantity, setQuantity] = useState(0)
+interface QuantityCounterProps {
+  ofCoffee: string
+}
+
+export function QuantityCounter({ ofCoffee }: QuantityCounterProps) {
+  const { addItem, cart, removeItem } = useContext(CartContext)
 
   const decreaseAmount = () => {
-    if (quantity > 0) {
-      setQuantity(state => (state - 1))
-    }
+    removeItem(ofCoffee)
   }
 
   const increaseAmount = () => {
-    if (quantity < 50) {
-      setQuantity(state => (state + 1))
-    }
+    addItem(ofCoffee)
   }
+
+  const itemAmount = cart[cart.findIndex(coffee => coffee.name === ofCoffee)] ? cart[cart.findIndex(coffee => coffee.name === ofCoffee)].amount : 0
 
   return (
     <QuantityCounterContainer>
@@ -23,7 +26,7 @@ export function QuantityCounter() {
         <Minus size={ 14 } />
       </button>
 
-      <span>{ quantity }</span>
+      <span>{ itemAmount }</span>
 
       <button onClick={ increaseAmount }>
         <Plus size={ 14 } />
