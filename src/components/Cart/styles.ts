@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CartContainer = styled.div`
   position: relative;
@@ -9,8 +9,8 @@ export const CartContainer = styled.div`
     align-items: center;
     width: 2.375rem;
     height: 2.375rem;
-    color: ${(props) => props.theme["yellow-dark"]};
-    background-color: ${(props) => props.theme["yellow-light"]};
+    color: ${(props) => props.theme['yellow-dark']};
+    background-color: ${(props) => props.theme['yellow-light']};
     border-radius: 0.375rem;
   }
 `
@@ -27,6 +27,6 @@ export const ItemsCounter = styled.span`
   font-size: 0.75rem;
   font-weight: 700;
   color: white;
-  background: ${(props) => props.theme["yellow-dark"]};
+  background: ${(props) => props.theme['yellow-dark']};
   border-radius: 50%;
 `

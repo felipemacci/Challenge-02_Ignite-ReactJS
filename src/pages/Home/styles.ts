@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -16,14 +16,14 @@ export const HomeContainer = styled.div`
       font-family: 'Baloo 2', sans-serif;
       font-size: 3rem;
       line-height: 1.3;
-      color: ${(props) => props.theme["base-title"]};
+      color: ${(props) => props.theme['base-title']};
     }
 
     p {
       margin-top: 1rem;
       line-height: 1.3;
       font-size: 1.25rem;
-      color: ${(props) => props.theme["base-subtitle"]};
+      color: ${(props) => props.theme['base-subtitle']};
     }
   }
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const QuantityCounterContainer = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const QuantityCounterContainer = styled.div`
   gap: 0.25rem;
   width: 4.5rem;
   height: 2.375rem;
-  background: ${(props) => props.theme["base-button"]};
+  background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
 
   button {
@@ -17,13 +17,13 @@ export const QuantityCounterContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: ${(props) => props.theme["purple-dark"]};
+      color: ${(props) => props.theme['purple-dark']};
     }
   }
 
   span {
     width: 1.25rem;
     text-align: center;
-    color: ${(props) => props.theme["base-title"]};
+    color: ${(props) => props.theme['base-title']};
   }
 `

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useState } from 'react'
 
 interface ClientInfoFormat {
   street: string
@@ -20,17 +20,19 @@ interface ClientInfoContextProviderProps {
   children: ReactNode
 }
 
-export function ClientInfoContextProvider({ children }: ClientInfoContextProviderProps) {
+export function ClientInfoContextProvider({
+  children,
+}: ClientInfoContextProviderProps) {
   const [clientInfo, setClientInfo] = useState<ClientInfoFormat | null>(null)
 
   return (
     <ClientInfoContext.Provider
       value={{
         clientInfo,
-        setClientInfo
+        setClientInfo,
       }}
     >
-      { children }
+      {children}
     </ClientInfoContext.Provider>
   )
 }

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SuccessContainer = styled.div`
   padding: 2.5rem 0;
@@ -13,13 +13,13 @@ export const SuccessContainer = styled.div`
       line-height: 1.3;
       font-family: 'Baloo 2', sans-serif;
       font-size: 2rem;
-      color: ${(props) => props.theme["yellow-dark"]};
+      color: ${(props) => props.theme['yellow-dark']};
     }
 
     p {
       line-height: 1.3;
       font-size: 1.25rem;
-      color: ${(props) => props.theme["base-subtitle"]};
+      color: ${(props) => props.theme['base-subtitle']};
     }
   }
 

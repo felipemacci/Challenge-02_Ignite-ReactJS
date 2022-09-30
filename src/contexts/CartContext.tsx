@@ -1,6 +1,13 @@
-import { createContext, ReactNode, useEffect, useReducer } from "react"
-import { CartReducer, Coffee, coffeeList } from "../reducers/CartReducer/reducer"
-import { addNewItemAction, removeItemAction } from "../reducers/CartReducer/actions"
+import { createContext, ReactNode, useEffect, useReducer } from 'react'
+import {
+  CartReducer,
+  Coffee,
+  coffeeList,
+} from '../reducers/CartReducer/reducer'
+import {
+  addNewItemAction,
+  removeItemAction,
+} from '../reducers/CartReducer/actions'
 
 interface CartContextData {
   coffeeList: Coffee[]
@@ -16,10 +23,21 @@ interface CartContextProviderProps {
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cart, dispatch] = useReducer(CartReducer, [])
+  const [cart, dispatch] = useReducer(CartReducer, [], () => {
+    const storedCoffeeList = localStorage.getItem(
+      '@ignite_coffee-delivery:cart-1.0.0',
+    )
+
+    if (storedCoffeeList) {
+      return JSON.parse(storedCoffeeList)
+    }
+  })
 
   useEffect(() => {
-    localStorage.setItem('@ignite_coffee-delivery:cart-1.0.0', JSON.stringify(cart))
+    localStorage.setItem(
+      '@ignite_coffee-delivery:cart-1.0.0',
+      JSON.stringify(cart),
+    )
   }, [cart])
 
   const addItem = (name: string) => {
@@ -29,13 +47,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const removeItem = (name: string) => dispatch(removeItemAction(name))
 
   return (
-    <CartContext.Provider value={{
-      coffeeList,
-      cart,
-      addItem,
-      removeItem
-    }}>
-      { children }
+    <CartContext.Provider
+      value={{
+        coffeeList,
+        cart,
+        addItem,
+        removeItem,
+      }}
+    >
+      {children}
     </CartContext.Provider>
   )
 }

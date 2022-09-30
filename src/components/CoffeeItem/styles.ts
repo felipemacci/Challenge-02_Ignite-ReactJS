@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CoffeeItemContainer = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const CoffeeItemContainer = styled.div`
     p {
       font-size: 1rem;
       font-weight: normal;
-      color: ${(props) => props.theme["base-subtitle"]};
+      color: ${(props) => props.theme['base-subtitle']};
     }
   }
 
@@ -39,8 +39,8 @@ export const CoffeeItemContainer = styled.div`
       height: 2rem;
       text-transform: uppercase;
       font-size: 0.75rem;
-      color: ${(props) => props.theme["base-text"]};
-      background: ${(props) => props.theme["base-button"]};
+      color: ${(props) => props.theme['base-text']};
+      background: ${(props) => props.theme['base-button']};
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -50,12 +50,12 @@ export const CoffeeItemContainer = styled.div`
       }
 
       &:hover {
-        background: ${(props) => props.theme["base-hover"]};
+        background: ${(props) => props.theme['base-hover']};
       }
     }
   }
 
   strong {
-    color: ${(props) => props.theme["base-text"]};
+    color: ${(props) => props.theme['base-text']};
   }
 `

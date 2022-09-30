@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CoffeeCardContainer = styled.div`
   display: grid;
   grid-template-rows: 9rem 1fr 4.138rem;
   padding: 0 1.5rem 1.25rem 1.5rem;
   text-align: center;
-  background: ${(props) => props.theme["base-card"]};
+  background: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
 
   header {
@@ -29,8 +29,8 @@ export const CoffeeCardContainer = styled.div`
       padding: 0.25rem 0.5rem;
       font-size: 0.625rem;
       font-weight: 700;
-      color: ${(props) => props.theme["yellow-dark"]};
-      background: ${(props) => props.theme["yellow-light"]};
+      color: ${(props) => props.theme['yellow-dark']};
+      background: ${(props) => props.theme['yellow-light']};
       border-radius: 100px;
     }
   }
@@ -47,13 +47,13 @@ export const CoffeeCardContainer = styled.div`
       line-height: 1.3;
       font-family: 'Baloo 2', sans-serif;
       font-size: 1.25rem;
-      color: ${(props) => props.theme["base-subtitle"]};
+      color: ${(props) => props.theme['base-subtitle']};
     }
 
     p {
       line-height: 1.3;
       font-size: 0.875rem;
-      color: ${(props) => props.theme["base-label"]};
+      color: ${(props) => props.theme['base-label']};
     }
   }
 
@@ -65,7 +65,7 @@ export const CoffeeCardContainer = styled.div`
 
     .price {
       font-size: 0.875rem;
-      color: ${(props) => props.theme["base-text"]};
+      color: ${(props) => props.theme['base-text']};
 
       strong {
         font-family: 'Baloo 2', sans-serif;
@@ -85,8 +85,8 @@ export const CoffeeCardContainer = styled.div`
         align-items: center;
         width: 2.375rem;
         height: 2.375rem;
-        color: ${(props) => props.theme["base-card"]};
-        background: ${(props) => props.theme["purple-dark"]};
+        color: ${(props) => props.theme['base-card']};
+        background: ${(props) => props.theme['purple-dark']};
         border-radius: 6px;
 
         &:hover {

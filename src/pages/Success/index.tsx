@@ -1,6 +1,6 @@
-import { SuccessContainer } from "./styles";
+import { SuccessContainer } from './styles'
 import delivery from '../../assets/motoboy.svg'
-import { OrderInfo } from "./components/OrderInfo";
+import { OrderInfo } from './components/OrderInfo'
 
 export function Success() {
   return (
@@ -8,12 +8,14 @@ export function Success() {
       <section id="success">
         <div className="success__message">
           <h2>Yay! Confirmed order</h2>
-          <p>Now all you have to do is wait for the coffee to come to you soon</p>
+          <p>
+            Now all you have to do is wait for the coffee to come to you soon
+          </p>
 
           <OrderInfo />
         </div>
 
-        <img className="success__image" src={ delivery } />
+        <img className="success__image" src={delivery} alt="" />
       </section>
     </SuccessContainer>
   )

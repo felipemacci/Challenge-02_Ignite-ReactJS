@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PresentationItemsContainer = styled.div`
   display: flex;
@@ -23,12 +23,20 @@ export const PresentationItem = styled.div`
     border-radius: 50%;
   }
 
-  &:nth-of-type(1) .icon { background: ${(props) => props.theme["yellow-dark"]} }
-  &:nth-of-type(2) .icon { background: ${(props) => props.theme["base-text"]} }
-  &:nth-of-type(3) .icon { background: ${(props) => props.theme.yellow} }
-  &:nth-of-type(4) .icon { background: ${(props) => props.theme.purple} }
+  &:nth-of-type(1) .icon {
+    background: ${(props) => props.theme['yellow-dark']};
+  }
+  &:nth-of-type(2) .icon {
+    background: ${(props) => props.theme['base-text']};
+  }
+  &:nth-of-type(3) .icon {
+    background: ${(props) => props.theme.yellow};
+  }
+  &:nth-of-type(4) .icon {
+    background: ${(props) => props.theme.purple};
+  }
 
   .text {
-    color: ${(props) => props.theme["base-text"]};
+    color: ${(props) => props.theme['base-text']};
   }
 `

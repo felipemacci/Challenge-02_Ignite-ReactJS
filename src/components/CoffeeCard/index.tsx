@@ -1,7 +1,7 @@
-import { CoffeeCardContainer } from "./styles";
-import { QuantityCounter } from "../QuantityCounter";
-import { NavLink } from "react-router-dom";
-import { ShoppingCartSimple } from "phosphor-react";
+import { CoffeeCardContainer } from './styles'
+import { QuantityCounter } from '../QuantityCounter'
+import { NavLink } from 'react-router-dom'
+import { ShoppingCartSimple } from 'phosphor-react'
 
 export interface CoffeeCardProps {
   name: string
@@ -11,36 +11,40 @@ export interface CoffeeCardProps {
   price: number
 }
 
-export function CoffeeCard({ name, description, image, tags, price }: CoffeeCardProps) {
+export function CoffeeCard({
+  name,
+  description,
+  image,
+  tags,
+  price,
+}: CoffeeCardProps) {
   return (
     <CoffeeCardContainer>
       <header>
-        <img src={ image } />
+        <img src={image} alt="" />
 
         <ul>
-          {
-            tags.map((tag) => {
-              return <li>{ tag }</li>
-            })
-          }
+          {tags.map((tag) => {
+            return <li>{tag}</li>
+          })}
         </ul>
       </header>
 
       <div className="card-text">
-        <h3>{ name }</h3>
-        <p>{ description }</p>
+        <h3>{name}</h3>
+        <p>{description}</p>
       </div>
 
       <footer>
         <span className="price">
-          $ <strong>{ String(price.toFixed(2)).replace('.', ',') }</strong>
+          $ <strong>{String(price.toFixed(2)).replace('.', ',')}</strong>
         </span>
 
         <div className="cart-actions">
-          <QuantityCounter ofCoffee={ name } />
-          
+          <QuantityCounter ofCoffee={name} />
+
           <NavLink to="/cart">
-            <ShoppingCartSimple size={ 22 } weight="fill" />
+            <ShoppingCartSimple size={22} weight="fill" />
           </NavLink>
         </div>
       </footer>
