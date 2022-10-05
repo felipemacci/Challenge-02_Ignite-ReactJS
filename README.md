@@ -20,7 +20,7 @@
 
 #### HOW TO USE:
 * First have NodeJS on your machine
-* With the project folder already open in VS CODE (or similar) type the commands in the sequence: "npm install" and "npm run dev"
+* With the project folder already open in VS CODE (or similar) type the commands in the sequence: "npm install", "npm run dev:server" and "npm run dev"
 * Then open the domain that appeared in your console
 * Finally, use and enjoy the Ignite Coffee Delivery!
 
