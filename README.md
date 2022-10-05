@@ -11,7 +11,7 @@
 
 #### TECHNOLOGIES:
 - HTML 📄
-- CSS 🎨
+- Styled-Components 🎨
 - TypeScript 💻
 - ReactJS ⚛
 - NodeJS 🐱‍👤
