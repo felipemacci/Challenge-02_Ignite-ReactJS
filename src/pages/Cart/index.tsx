@@ -214,7 +214,7 @@ export function Cart() {
                 )
               })
             ) : (
-              <p>Nenhum item em seu carrinho :P</p>
+              <p>No items in your cart :P</p>
             )}
           </ul>
 
